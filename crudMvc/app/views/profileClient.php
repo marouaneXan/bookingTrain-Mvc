@@ -1,4 +1,15 @@
 <div class="container rounded bg-white   mt-5 mb-5">
+
+    <?php  print_r($msg);
+             print_r($msgP);
+     ?>
+<?php if(isset($msgP))
+    if($msgP==0) :?> 
+  <div class="alert alert-danger" role="alert">
+      impossible d'annuler  date expiré
+  </div>
+  <?php endif;
+?>
     <div class="row">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center  text-center p-3 py-5">
@@ -13,17 +24,17 @@
                 </div>
 				<form action="<?php echo BURL ?>voyage/profileCEdit" method="POST">    
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">nom</label><input type="text" class="form-control" name="nomC" placeholder=" nom" value="<?php  if (isset($_SESSION['isLogin'])) echo $_SESSION['nom']?>"></div>
-                    <div class="col-md-6"><label class="labels">prenom</label><input type="text" class="form-control" value="<?php  if (isset($_SESSION['isLogin'])) echo $_SESSION['prenom']?>"  name="prenomC" placeholder="prenom"></div>
+                    <div class="col-md-6"><label class="labels">nom</label><input type="text" class="form-control" name="nomC" placeholder=" nom" value="<?php  if (isset($_SESSION['isLogin'])) echo $_SESSION['nom']?>" required></div>
+                    <div class="col-md-6"><label class="labels">prenom</label><input type="text" class="form-control" value="<?php  if (isset($_SESSION['isLogin'])) echo $_SESSION['prenom']?>"  name="prenomC" placeholder="prenom" required></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Tel</label><input type="number" class="form-control"  name="telC" placeholder="Tel" value="<?php  if (isset($_SESSION['isLogin'])) echo $_SESSION['tel']?>"></div>
-                    <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" name="emailC" placeholder="Email" value="<?php  if (isset($_SESSION['isLogin'])) echo $_SESSION['email']?>"></div>
-                    <div class="col-md-12"><label class="labels"> password</label><input type="password" class="form-control"  name="passC"placeholder="password" value=""></div>
+                    <div class="col-md-12"><label class="labels">Tel</label><input type="number" class="form-control"  name="telC" placeholder="Tel" value="<?php  if (isset($_SESSION['isLogin'])) echo $_SESSION['tel']?>" required></div>
+                    <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" name="emailC" placeholder="Email" value="<?php  if (isset($_SESSION['isLogin'])) echo $_SESSION['email']?>"required></div>
+                    <div class="col-md-12"><label class="labels"> password</label><input type="password" class="form-control"  name="passC"placeholder="password" value="" required></div>
                     
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">new password</label><input type="password" name="nPassC" class="form-control" placeholder="new password" value=""></div>
+                    <div class="col-md-6"><label class="labels">new password</label><input type="password" name="nPassC" class="form-control" placeholder="new password" value="" ></div>
                     <div class="col-md-6"><label class="labels">confirm new password</label><input type="password" name="cNPassC" class="form-control" value="" placeholder=" confirm new password"></div>
                 </div>
                 <div class="mt-5 text-center"><button  class="btn btn-primary profile-button"  name ="submit" type="submit">Save Profile</button></div>

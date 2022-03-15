@@ -180,7 +180,16 @@ public function searchVoyage(){
 
          }
          public function profileCEdit(){
+            if(!isset($_SESSION)) 
+            { 
+                session_start();}
+                           $client=new client();
+            $oldEmail=$_SESSION['email'];
+            $id_client=$_SESSION['id_client'];
 
+            $msg="";
+            $msgP=0;
+            
                   
             if (isset($_POST['submit'])){
             
@@ -191,14 +200,41 @@ public function searchVoyage(){
                   $pass=$_POST['passC'];
                   $new_pass=$_POST['nPassC'];
                   $confirm_new_pass=$_POST['cNPassC'];
-                  echo"ok";
-                  echo"ok";
+
+                  if(!empty($new_pass) && !empty($confirm_new_pass)){
+                     if($confirm_new_pass==$new_pass){
+                        $pass= $new_pass;
+
+
+                     }else {$msgP="password not the same";}
+
+
+                  }
+
+
+
+                     if($client->verifyLogin($oldEmail,$pass)!=0){
+
+                           if($client->getIdClient($email)==0){
+
+                                 // $client->updateClient($id_client,$prenom,$nom,$email,$pass,$tel);
+
+                              }else {$msg=" email deja utilisé";}
+                     }else { $msg="le mot de pass est erroné";}
+
+                    
+                 
 
 
                }
-                  // view::load('includes/header');
+
+               $data['msg']=$msg;
+               $data['msgP']=$msgP;
+
+               view::load('includes/header');
             
-            // view::load('profileClient');
+               view::load('profileClient',$data);
+                 
             
          }
         

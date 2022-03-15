@@ -49,16 +49,23 @@ class client extends DataBase{
         }}
 
 
-        public function updateClient($idVoyage,$gare_depart,$gare_arriver,$prix,$heure_depart,$heure_arriver,$id_train,$etat_voyage){  
+        public function updateClient($id_client,$prenom,$nom,$email,$pass,$tel){  
+            $pass= password_hash($pass, PASSWORD_DEFAULT);
 
-            $sql="INSERT INTO `client` (`id_client`, `prenom`, `nom`, `email`, `tel`, `password`) VALUES (NULL, '', '', '', '', '')
-            ";
+            $sql="UPDATE `client` SET `prenom` = ? ,nom= ? ,tel= ? ,password= ? , email= ?  WHERE `client`.`id_client` = ?";
             $stmt= $this->conn->prepare($sql);
-            $stmt->execute([$gare_depart, $gare_arriver, $prix,$heure_depart,$heure_arriver,$id_train,$etat_voyage,$idVoyage]);
-        
+            $stmt->execute([$prenom, $nom, $tel,$pass,$email,$id_client]);
+
         
         }
 
+        public function getIdClient($email){
+            $sql = "SELECT * from client where email=?"; 
+            $result = $this->conn->prepare($sql); 
+            $result->execute([$email]); 
+            return $result->fetchColumn(); 
+            return 0;
+        }
 
         // public function addUser($email,$nom,$prenom,$tel){
         //     $sql1="SELECT email FROM `client` WHERE email = ?";
