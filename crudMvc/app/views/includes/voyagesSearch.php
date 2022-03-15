@@ -25,7 +25,7 @@
                             <td><?php echo $row['nom_train']; ?></td>
                                   
                              <td>
-                             <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="window.location.href='<?php  echo BURL?>reservation/index/ <?php  echo $row['id_voyage']  ;?>/<?php  echo $date_voyage  ;?>';">Reserver</button>         
+                             <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="window.location.href='<?php  echo BURL?>reservation/index/ <?php  echo $row['id_voyage']  ;?>/<?php  echo $date_voyage  ;?>/<?php  echo $nbrPlaces ;?>';">Reserver</button>         
                             </td>
                         </tr>
                 <?php endforeach ?>    

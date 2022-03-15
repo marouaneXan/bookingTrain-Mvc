@@ -115,6 +115,16 @@ $sql = "select * from voyage v join train t on v.id_train=t.id_train  WHERE v.ga
 
 }
 
+public function  TestVoyageAnnuler($id_voyage,$dateVoyage){
+ 
+    $sql = "SELECT count(*) FROM voyage_anuuler WHERE id_voyage = ? and dateVoyage= ? "; 
+    $result = $this->conn->prepare($sql); 
+    $result->execute([$id_voyage,$dateVoyage]); 
+    return $result->fetchColumn(); 
+
+
+    
+}
 
 
 

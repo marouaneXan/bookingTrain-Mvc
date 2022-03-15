@@ -15,46 +15,47 @@
                <div class="col-6">
             <label  class="text-dark" for=""> Gar de départ</label>
               
-               <input class="form-control" list="datalistDepart" id="gareDepartI" name="gareDepartI" placeholder="Gar de depart">
+               <input class="form-control" list="datalistDepart" id="gareDepartI" name="gareDepartI" placeholder="Gar de depart" required>
     
-<datalist id="datalistDepart">
-  <option value="casa">
-  <option value="settat">
-  <option value="safi">
-  <option value="berrechid">
-  <option value="tanger">
-  <option value="marrakech">
-  <option value="rabat">
-</datalist>
+                          <datalist id="datalistDepart">
+                          <option value="casa">
+                          <option value="settat">
+                          <option value="safi">
+                          <option value="berrechid">
+                          <option value="tanger">
+                          <option value="marrakech">
+                          <option value="rabat">
+                          </datalist>
             </div>
            <div class="col-6">
             <label  class="text-dark" for=""> Date de départ</label>
-           <input type="date"    id="dateDepartI" name="dateDepartI" class="form-control"  placeholder="Gar de depart" aria-describedby="date">       
+           <input type="date"    id="dateDepartI" name="dateDepartI" class="form-control"  placeholder="Gar de depart" aria-describedby="date" required>       
                   </div>
   
           </div>  
+          
          
           <br>
           <div class="row g-2 ">
                <div class="col-6">
             <label  class="text-dark" for=""> Gar d'arriver</label>
                
-               <input class="form-control" list="datalistArriver" id="gareArriverI" name="gareArriverI" placeholder=" Gar d'arriver">
-<datalist id="datalistArriver">
-<option value="casa">
-  <option value="settat">
-  <option value="safi">
-  <option value="berrechid">
-  <option value="tanger">
-  <option value="marrakech">
-  <option value="rabat">
-</datalist>
+               <input class="form-control" list="datalistArriver" id="gareArriverI" name="gareArriverI" placeholder=" Gar d'arriver" required>
+                        <datalist id="datalistArriver">
+                        <option value="casa">
+                        <option value="settat">
+                        <option value="safi">
+                        <option value="berrechid">
+                        <option value="tanger">
+                        <option value="marrakech">
+                        <option value="rabat">
+                        </datalist>
 
                 </div>
            <div class="col-6">
            <label  id="dateArriverL" class="text-dark" for=""  style="display:none"> Date de retour</label>
            
-           <input   style="display:none" type="date"   id="dateArriverI" name="dateArriverI" class="form-control" aria-describedby="date">       
+           <input   style="display:none" type="date"   id="dateArriverI" name="dateArriverI" class="form-control" aria-describedby="date" >       
  
                   </div>
   
@@ -66,18 +67,35 @@
               
           
           <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" onclick="diplayBox()" name="radioAller" id="inlineRadio1" value="option1">
-  <label class="form-check-label text-dark" id="inlineRadio1l" for="inlineRadio1">Aller-Retour</label>
+                <input class="form-check-input" type="radio" onclick="diplayBox()" name="radioAller" id="inlineRadio1" value="option1">
+                <label class="form-check-label text-dark" id="inlineRadio1l" for="inlineRadio1">Aller-Retour</label>
 </div>
 <div class="form-check form-check-inline">
   <input class="form-check-input " type="radio" onclick="antiDiplayBox()" name="radioAller" id="inlineRadio2" value="option2" checked>
   <label class="form-check-label text-dark" for="inlineRadio2">Aller simple</label>
 </div>
+    
 
           </div>
-  
+          <div class="row g-2 ">       
+          <label  class="text-dark" for=""> nombres de places</label>
+               
+          <select class="form-select"  name="placeI" id="id_train" aria-label="Default select example" required>
+               <option selected>Places</option> 
+                          <?php 
+                          for($i=1;$i<=10;$i++){
+                               echo" <option value= ".$i.">".$i."</option>  ";
+
+
+                          }
+                       
+                        ?>
+                        </select>
+                        
+        </div>
+
          
-          <button type="submit" class="btn btn-primary">Primary</button>
+          <button  type="submit" class="btn btn-primary mt-3">Show </button>
 
 
       </form>

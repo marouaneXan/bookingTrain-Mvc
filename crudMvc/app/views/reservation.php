@@ -8,7 +8,7 @@
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5"> les informations voyageurs   </h3>
-            <form class=""  action ="<?php echo BURL?>reservation/validerReservation/<?php echo $id_voyage?>/<?php echo $date_voyage ;?>" id="a" method="POST">
+            <form class=""  action ="<?php echo BURL?>reservation/validerReservation/<?php echo $id_voyage?>/<?php echo $date_voyage ;?>/<?php echo $nbrPlaces ;?>" id="a" method="POST">
 
             
       
@@ -19,7 +19,7 @@
 
 
              
-                <h5>   passager 1 </h5>
+                <h5 id="passagerNum" > passager 1  </h5>
                 <div class="row">
                 <div class="col-md-6 mb-2">
 

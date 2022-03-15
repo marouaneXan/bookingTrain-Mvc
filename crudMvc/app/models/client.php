@@ -27,6 +27,7 @@ class client extends DataBase{
         }
              
     }
+    
    
     //verify login client
     public function verifyLogin($email,$pass){
@@ -47,6 +48,16 @@ class client extends DataBase{
 
         }}
 
+
+        public function updateClient($idVoyage,$gare_depart,$gare_arriver,$prix,$heure_depart,$heure_arriver,$id_train,$etat_voyage){  
+
+            $sql="INSERT INTO `client` (`id_client`, `prenom`, `nom`, `email`, `tel`, `password`) VALUES (NULL, '', '', '', '', '')
+            ";
+            $stmt= $this->conn->prepare($sql);
+            $stmt->execute([$gare_depart, $gare_arriver, $prix,$heure_depart,$heure_arriver,$id_train,$etat_voyage,$idVoyage]);
+        
+        
+        }
 
 
         // public function addUser($email,$nom,$prenom,$tel){

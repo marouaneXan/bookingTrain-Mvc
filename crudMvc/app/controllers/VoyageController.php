@@ -26,58 +26,66 @@ public function searchVoyage(){
    $date_depart = $_POST['dateDepartI'];
    $date_fin = $_POST['dateArriverI'];
    $radioAller= $_POST['radioAller'];
+   $nbrPlace= $_POST['placeI'];
+
    $data['date_voyage']=$date_depart;
+   $data['nbrPlaces']=$nbrPlace;
 
          $db=new Voyage();
            $search=$db->searchVoyage($gare_depart,$gare_arriver);
            $canceled= $db->getAllVoyagesCanceled();
+           $reservation= new reservations();
+           
          //tester si le voyage chercher est  deja annuler par admin ou non
           
-           foreach($canceled as $row){
+    
            
-            foreach($search as $key=>$row1){
-             
-                 
-       
-          if($row['id_train']==$row1['id_train'] && $row['dateVoyage']==$date_depart){
+            foreach($search as $key=>$row){
+               
+               $nbrReservation=$reservation->getNbrReservation($row['id_voyage']);
+               $nombrePlaceTrain=$reservation->getNbrPlaces($row['id_voyage']);
+                      
+                   if(($nombrePlaceTrain-$nbrReservation)<$nbrPlace ||($db->TestVoyageAnnuler($row['id_voyage'], $date_depart)==1) ){
 
-           
-            unset( $search[$key]);
-            
+                   unset($search[$key]);
+      
         
-         }  
-            }
-         }
+         } 
+      } 
+      
+        
         
          $data['voyages']=$search;
          $data['title']="Depart le : " .$date_depart."  trajet : ". $gare_depart ." - ". $gare_arriver;
             view::load('homeVoyages');
             view::load('includes/voyagesSearch',$data);
+         
+
             if (!empty($date_fin)){
-               $search=$db->searchVoyage($gare_arriver,$gare_depart);
-               foreach($canceled as $row){
+               foreach($search as $key=>$row){
+               
+                  $nbrReservation=$reservation->getNbrReservation($row['id_voyage']);
+                  $nombrePlaceTrain=$reservation->getNbrPlaces($row['id_voyage']);
+                         
+                      if(($nombrePlaceTrain-$nbrReservation)<$nbrPlace ||($db->TestVoyageAnnuler($row['id_voyage'], $date_depart)==1) ){
+   
+                      unset($search[$key]);
+         
            
-                  foreach($search as $key=>$row1){
-                   
-                          
-                }
-                if($row['id_train']==$row1['id_train'] && $row['dateVoyage']==$date_depart){
-      
-                 
-                  unset( $search[$key]);
-                 
-                 
-      
-                  }
-               }
+            } 
+         } 
+               $search=$db->searchVoyage($gare_arriver,$gare_depart);
+              
          $data['title']="Retour le : " .$date_fin."  trajet : ". $gare_arriver ." - ". $gare_depart;
          $data['voyages']=$search;
 
                view::load('includes/voyagesSearch',$data);
 
             }
-      
          }
+         
+      
+      
 
          public function Login(){
 
@@ -160,6 +168,38 @@ public function searchVoyage(){
 
    
 
+         }
+
+
+         public function profileC(){
+
+
+            view::load('includes/header');
+            
+            view::load('profileClient');
+
+         }
+         public function profileCEdit(){
+
+                  
+            if (isset($_POST['submit'])){
+            
+                  $nom=$_POST['nomC'];
+                  $prenom=$_POST['prenomC'];
+                  $email=$_POST['emailC'];
+                  $tel=$_POST['telC'];
+                  $pass=$_POST['passC'];
+                  $new_pass=$_POST['nPassC'];
+                  $confirm_new_pass=$_POST['cNPassC'];
+                  echo"ok";
+                  echo"ok";
+
+
+               }
+                  // view::load('includes/header');
+            
+            // view::load('profileClient');
+            
          }
         
    
