@@ -87,11 +87,11 @@ public function searchVoyage(){
       
       
 
-         public function Login(){
-
+         public function Login($msg){
+            $data['msg']=$msg;
             view::load('includes/header');
             
-            view::load('loginClient');
+            view::load('loginClient',$data);
       
       
       
@@ -109,7 +109,7 @@ public function searchVoyage(){
 
                   $db =new client();
                  if($db->signUp($email,$nom,$prenom,$tel,$pass)) {
-                  header("Location: ".BURL."Voyage/Login");
+                  header("Location: ".BURL."Voyage/Login/0");
 
                  } else
                  echo"<script>  alert('change email'); </script>";
@@ -147,7 +147,7 @@ public function searchVoyage(){
 
              }
              
-             else   header("Location: ".BURL."Voyage/Login");
+             else   header("Location: ".BURL."Voyage/Login/1");
 
                
                
@@ -172,23 +172,33 @@ public function searchVoyage(){
 
 
          public function profileC(){
+            if(!isset($_SESSION)) 
+            { 
+                session_start();}
+                $client=new client();
+            $id_client=$_SESSION['id_client'];
 
+
+               $data['client']=$client->getClient($id_client);         
 
             view::load('includes/header');
-            
-            view::load('profileClient');
+            view::load('profileClient',$data);
 
+           
          }
+         
          public function profileCEdit(){
             if(!isset($_SESSION)) 
             { 
                 session_start();}
-                           $client=new client();
-            $oldEmail=$_SESSION['email'];
-            $id_client=$_SESSION['id_client'];
+                  $id_client=$_SESSION['id_client'];
 
-            $msg="";
-            $msgP=0;
+                  $client=new client();
+                  $data['client']=$client->getClient($id_client);         
+                  $oldEmail=$data['client'][0]['email'];
+                  $msg=0;
+                  $msgP=0;
+                  $success=0;
             
                   
             if (isset($_POST['submit'])){
@@ -200,13 +210,15 @@ public function searchVoyage(){
                   $pass=$_POST['passC'];
                   $new_pass=$_POST['nPassC'];
                   $confirm_new_pass=$_POST['cNPassC'];
+                  $pass1=$pass;
 
                   if(!empty($new_pass) && !empty($confirm_new_pass)){
                      if($confirm_new_pass==$new_pass){
-                        $pass= $new_pass;
+                        $pass1= $new_pass;
 
 
-                     }else {$msgP="password not the same";}
+                     }else {$msgP="password not the same"; $pass1= $pass; }
+
 
 
                   }
@@ -214,10 +226,16 @@ public function searchVoyage(){
 
 
                      if($client->verifyLogin($oldEmail,$pass)!=0){
+                                 if($email==$oldEmail){
+                                $client->updateClient($id_client,$prenom,$nom,$email,$pass1,$tel);
+                                 //  $success="Bien modifier ! 1";
 
-                           if($client->getIdClient($email)==0){
+                           }
 
-                                 // $client->updateClient($id_client,$prenom,$nom,$email,$pass,$tel);
+                           elseif($client->getIdClient($email)==0 ){
+                                  $success="Bien modifier ! 2";
+
+                                 $client->updateClient($id_client,$prenom,$nom,$email,$pass1,$tel);
 
                               }else {$msg=" email deja utilisé";}
                      }else { $msg="le mot de pass est erroné";}
@@ -230,7 +248,11 @@ public function searchVoyage(){
 
                $data['msg']=$msg;
                $data['msgP']=$msgP;
+               $data['success']=$success;
+               $data['client']=$client->getClient($id_client);         
 
+
+               // $this->profileC();
                view::load('includes/header');
             
                view::load('profileClient',$data);

@@ -66,6 +66,13 @@ class client extends DataBase{
             return $result->fetchColumn(); 
             return 0;
         }
+        public function getClient($id_client){
+            $sql = "SELECT * from client where id_client=?"; 
+            $result = $this->conn->prepare($sql); 
+            $result->execute([$id_client]); 
+            return $result->fetchAll(); 
+            return 0;
+        }
 
         // public function addUser($email,$nom,$prenom,$tel){
         //     $sql1="SELECT email FROM `client` WHERE email = ?";

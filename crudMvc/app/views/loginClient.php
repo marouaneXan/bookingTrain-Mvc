@@ -1,4 +1,11 @@
+<?php if(isset($msg) && $msg==1):?> 
+  <div class="alert alert-danger" role="alert">
+  le mot de pass ou email erroné
+
+    </div> <?php endif ?>
+
 <html lang="en">
+
 
     <head>
         <meta charset="UTF-8">
@@ -11,7 +18,9 @@
     </head>
 
     <body>
+      
         <div class="container-fluid vh-100" style="margin-top:50px">
+        
             <div class="" style="margin-top:100px">
                 <div class="rounded d-flex justify-content-center">
                     <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
@@ -46,9 +55,7 @@
                         <p class="text-center mb-4">Don't have an account?
                                     <Button  type ="submit" name="submit" class="btn btn-info text-center mt-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Sign Up</Button>
                                 </p>  
-                        <button class="btn btn-secondary text-center mt-8 form-control" type="submit">
-                                    continue tant que invité(e) 
-                                </button>
+
                     </div>
                 </div>
             </div>

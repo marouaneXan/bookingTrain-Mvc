@@ -2,6 +2,7 @@
 body{
 
     height: 100vh;
+    width: 100vw;
 }
 
 .gradient-custom {
@@ -31,3 +32,9 @@ body{
 .text-info{
   cursor: pointer;
 }
+
+#table1{
+  width: 100%;
+  overflow-x: scroll;
+}
+/* modal success */

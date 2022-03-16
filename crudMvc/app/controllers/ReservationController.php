@@ -19,8 +19,8 @@ class ReservationController{
     }
 
     public function  validerReservation($id_voyage,$date_voyage,$nbrPlaces){
-        echo $id_voyage."<br>";
-        echo $date_voyage;
+        // echo $id_voyage."<br>";
+        // echo $date_voyage;
         $user= new user();
         
         $reservation= new reservations();
@@ -45,11 +45,11 @@ class ReservationController{
                     $email=$_POST['emailP1'];
                     $tel=$_POST['telP1'];
                     $reservation->addReservation($id_voyage,"0",$id_client,$date_voyage);
-                    echo " client";
+                    // echo " client";
                     
 
                         for($i=2;$i<=$nbrPlaces;$i++){
-                            echo 'user'.$i;
+                            // echo 'user'.$i;
                             $nom=$_POST['nomP'.$i];
                             $prenom=$_POST['prenomP'.$i];
                             $email=$_POST['emailP'.$i];
@@ -77,8 +77,8 @@ class ReservationController{
 
                    
                         for($i=1;$i<=$nbrPlaces;$i++){
-                            echo"fd";
-                            echo $i."<br>";
+                            // echo"fd";
+                            // echo $i."<br>";
                             $nom=$_POST['nomP'.$i];
                             $prenom=$_POST['prenomP'.$i];
                             $email=$_POST['emailP'.$i];
@@ -104,6 +104,11 @@ class ReservationController{
                 
 
             }
+             
+            view::load('includes/header');
+            view::load('success');
+
+
         
     }
 

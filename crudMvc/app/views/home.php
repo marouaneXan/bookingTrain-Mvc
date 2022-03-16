@@ -31,7 +31,7 @@ if(!isset($_SESSION['is_logedin'])){
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                   
                     <li>
-                        <a href="http://localhost/crudMvc/public/Voyage"  class="nav-link px-0 align-middle">
+                        <a href=" <?php echo BURL?>admin/homeAdmin"  class="nav-link px-0 align-middle">
                             <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                       
                     </li>
@@ -39,7 +39,7 @@ if(!isset($_SESSION['is_logedin'])){
                   
                   
                     <li>
-                        <a href="http://localhost/crudMvc/public/admin/voyageAnnuler/" class="nav-link px-0 align-middle">
+                        <a href=" <?php echo BURL?>admin/voyageAnnuler" class="nav-link px-0 align-middle">
                             <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Voyage Annuler</span> </a>
                     </li>
                 </ul>

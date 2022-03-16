@@ -1,3 +1,4 @@
+
 <p class="font-monospace text-center fw-bolder fs-1"> Mes reservations : </p>
 
   <?php if($msgError==0) :?> 
@@ -10,6 +11,11 @@
       Bien annuler
 </div>
     <?php endif?>
+    
+    
+    <div id="table1">
+
+
 <table class="table mx-auto ">
   <thead>
     <tr>
@@ -45,3 +51,4 @@
     
                 </tbody>
       </table>
+      </div>
