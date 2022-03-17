@@ -1,5 +1,6 @@
 <p class="font-monospace text-center fw-bolder fs-6"> <?php echo $title ?></p>
-
+  <div id="table1">
+    <div class="mx-auto col-12 col-lg-9 col-xl-7">
 <table class="table mx-auto ">
   <thead>
     <tr>
@@ -32,3 +33,5 @@
     
                 </tbody>
       </table>
+      </div>
+      </div>

@@ -34,7 +34,7 @@
       <div class="container">
         <a class="navbar-brand" href="<?php echo BURL; ?>Voyage">
           <!-- <img src="imgs/logo.png" alt="" /> -->
-            <H1 style="text-color:#fffff;"> TrainForYou</H1>
+            <H1 style="text-color:#fffff;"> EasyTravel</H1>
         </a>
         <button
           class="navbar-toggler"

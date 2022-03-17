@@ -29,7 +29,7 @@
             </div>
            <div class="col-6">
             <label  class="text-dark" for=""> Date de départ</label>
-           <input type="date"    id="dateDepartI" name="dateDepartI" class="form-control"  placeholder="Gar de depart" aria-describedby="date" required>       
+           <input type="date"    id="dateDepartI" name="dateDepartI" class="form-control"  placeholder="Gar de depart" aria-describedby="date" min="<?php echo date("Y-m-d")?>" required>       
                   </div>
   
           </div>  
@@ -55,7 +55,7 @@
            <div class="col-6">
            <label  id="dateArriverL" class="text-dark" for=""  style="display:none"> Date de retour</label>
            
-           <input   style="display:none" type="date"   id="dateArriverI" name="dateArriverI" class="form-control" aria-describedby="date" >       
+           <input   style="display:none" type="date"   id="dateArriverI" name="dateArriverI" class="form-control" aria-describedby="date"   min="<?php echo date("Y-m-d")?>" >       
  
                   </div>
   
@@ -81,7 +81,6 @@
           <label  class="text-dark" for=""> nombres de places</label>
                
           <select class="form-select"  name="placeI" id="id_train" aria-label="Default select example" required>
-               <option selected>Places</option> 
                           <?php 
                           for($i=1;$i<=10;$i++){
                                echo" <option value= ".$i.">".$i."</option>  ";

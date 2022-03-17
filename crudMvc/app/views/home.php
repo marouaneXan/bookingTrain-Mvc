@@ -14,6 +14,7 @@ if(!isset($_SESSION['is_logedin'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link    rel="stylesheet" href="<?php echo BURL; ?>/css/reservation.css"> 
    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <!-- <script src="../../public/js/homeAdmin.js"></script> -->
@@ -174,7 +175,7 @@ if(!isset($_SESSION['is_logedin'])){
                   <i class="bi bi-laptop"></i>
                 </div>
                 <h3 class="card-title mb-3">Clients</h3>
-                <h3 class="card-title mb-3">2423</h3>
+                <h3 class="card-title mb-3"><?php  echo $clients['count']?></h3>
 
                
               </div>
@@ -199,7 +200,7 @@ if(!isset($_SESSION['is_logedin'])){
                   <i class="bi bi-people"></i>
                 </div>
                 <h3 class="card-title mb-3">Reservations</h3>
-                <h3 class="card-title mb-3">121</h3>
+                <h3 class="card-title mb-3"><?php  echo $reservations['count']?></h3>
 
               </div>
             </div>
@@ -211,7 +212,7 @@ if(!isset($_SESSION['is_logedin'])){
                 <!-- all VOYAGES -->
     <p class="font-monospace text-center fw-bolder fs-1">ALL VOYAGES</p>
 
-
+                <div id="table1"> 
     <table class="table">
   <thead>
     <tr>
@@ -258,7 +259,7 @@ if(!isset($_SESSION['is_logedin'])){
       </table>
             <!-- Button trigger modal -->
 
-
+            </div>
 <!-- Modal  cancel voyage-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -272,7 +273,7 @@ if(!isset($_SESSION['is_logedin'])){
         <form action="http://localhost/crudMvc/public/admin/annulerVoyage/" method="POST"  >
        
           <div class="col-auto">
-          <input type="date"  name="dateVoyage" id="date" class="form-control" aria-describedby="date">
+          <input type="date"  name="dateVoyage" id="date" class="form-control" aria-describedby="date"  min="<?php echo date("Y-m-d")?>" required>
            </div>
            <div class="col-auto" style="display:none">
           <input type="text" id="id_voyageA" name="id_voyageA" class="form-control" aria-describedby="date">

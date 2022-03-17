@@ -52,10 +52,24 @@ class Reservations extends DataBase{
        
         return $result->fetchAll(PDO::FETCH_ASSOC);
 
+} 
+
+public function  getsAllReservations(){
+
+
+    $sql = 'SELECT count(*) as count FROM reservation ';
+
+    $statement = $this->conn->query($sql);
+
+    // get all publishers
     
+    
+    $reservation = $statement->fetch(PDO::FETCH_ASSOC);
+    return $reservation;
 
 
 }
+
 public function  annulerReservation($id_reservation){
 
     $sql="DELETE FROM `reservation` WHERE `reservation`.`id_reservation` = ? ";

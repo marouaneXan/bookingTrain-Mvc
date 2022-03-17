@@ -73,7 +73,18 @@ class client extends DataBase{
             return $result->fetchAll(); 
             return 0;
         }
+        public function  getsAllClients(){
 
+
+            $sql = 'SELECT count(*) as count FROM client ';
+        
+            $statement = $this->conn->query($sql);
+        
+            // get all publishers
+            $reservation = $statement->fetch(PDO::FETCH_ASSOC);
+            return $reservation;
+        
+        }
         // public function addUser($email,$nom,$prenom,$tel){
         //     $sql1="SELECT email FROM `client` WHERE email = ?";
         //     $result1 = $this->conn->prepare($sql1); 

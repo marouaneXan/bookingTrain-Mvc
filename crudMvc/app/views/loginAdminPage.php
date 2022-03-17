@@ -1,4 +1,11 @@
+                <?php    if(!isset($_SESSION)) 
+                {  session_start(); } 
+                if(  isset($_SESSION['is_logedin']) && $_SESSION['is_logedin'] == 1){
+                header('Location: '.BURL.'admin/homeAdmin');
+                }?>
+
 <html lang="en">
+    
 
     <head>
         <meta charset="UTF-8">
@@ -16,9 +23,15 @@
                 <div class="rounded d-flex justify-content-center">
                     <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
                         <div class="text-center">
+                                <?php if(isset($msg) && $msg==0):?> 
+                                <div class="alert alert-danger" role="alert">
+                                Incorrect username or password.
+                                </div>  <?php endif;?>
+
+
                             <h3 class="text-primary">Login Admin</h3>
                         </div>
-                        <form action="http://localhost/crudMvc/public/admin/verifyLogin/" Method="POST">
+                        <form action="<?php echo BURL?>admin/verifyLogin/" Method="POST">
                             <div class="p-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text bg-primary"><i

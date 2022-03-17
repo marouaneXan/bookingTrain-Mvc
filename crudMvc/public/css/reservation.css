@@ -2,7 +2,13 @@
 body{
 
     height: 100vh;
+    /* overflow-y: hidden; */
     width: 100vw;
+  /* background: linear-gradient(to bottom right, rgb(9, 4, 34), rgb(66, 172, 190)); */
+  /* background: -webkit-linear-gradient(to bottom right, rgb(9, 4, 34), rgb(66, 172, 190)) */
+
+
+
 }
 
 .gradient-custom {
@@ -11,7 +17,7 @@ body{
   
 
   /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+  background: -webkit-linear-gradient(to bottom right, rgb(9, 4, 34), rgb(66, 172, 190));
 
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to bottom right, rgb(9, 4, 34), rgb(66, 172, 190))
@@ -32,7 +38,9 @@ body{
 .text-info{
   cursor: pointer;
 }
-
+body::-webkit-scrollbar {
+  display: none;
+}
 #table1{
   width: 100%;
   overflow-x: scroll;

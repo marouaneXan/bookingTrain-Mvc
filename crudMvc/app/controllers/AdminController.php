@@ -34,8 +34,12 @@ class AdminController{
 
            
        }   
-        else {
-        header('Location: '.BURL.'admin');
+        else {  
+
+            $data['msg']=0;
+            
+            view::load('loginAdminPage',$data);
+            // header('Location: '.BURL.'admin');
 
            
         }
@@ -56,7 +60,14 @@ class AdminController{
     public function homeAdmin() {
         // get all voyages
      $db= new Voyage();
+     $reservation=new reservations();
+     $client= new client();
+     $data['clients']=$reservation->getsAllReservations();
+       
+     $data['reservations']=$client->getsAllClients();
      $data['voyages' ]=$db->getAllVoyages();
+    //  print_r($client->getsAllClients());
+    //  print_r($reservation->getsAllReservations());
      //  get all trains
      $train=new train();
      $data['train']= $train->getTrains();

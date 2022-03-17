@@ -1,6 +1,6 @@
 <script src="<?php echo BURL; ?>/js/reservation.js"></script>
 
-<section class=" gradient-custom">
+<section class=" gradient-custom h-100">
         <H1  class="text-center"   style="color:white;"> Reservation :</H1>
 <div class="container">
     <div class="row justify-content-center align-items-center ">
@@ -89,35 +89,7 @@
       
     </div>
   </div>
-  <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Votre Reservation : </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      Votre Reservation a été bien passer
-     
-        <i class=" fa fa-thin fa-check"></i>
-        Bon Voyage
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-       
-        
-      </div>
-    </div>
-  </div>
-</div>
-  
+ 
   
 </section>
 
