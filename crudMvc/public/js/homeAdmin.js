@@ -36,14 +36,14 @@ function formCheck(){
 
     }
 
-    if(heure_depart>=heure_fin){
+    // if(heure_depart>=heure_fin){
 
-        document.getElementById("errorHeureP").innerHTML="erreur heure";
-        document.getElementById("errorHeure").style.display="block";
-        return false;
+    //     document.getElementById("errorHeureP").innerHTML="erreur heure";
+    //     document.getElementById("errorHeure").style.display="block";
+    //     return false;
 
 
-    }
+    // }
 }
 
 // updateForm

@@ -127,7 +127,8 @@ class ReservationController{
 
         }
         public function annulerReservation($id_reservation,$date_Voyage,$heure_voyage){
-                
+            date_default_timezone_set('Africa/casablanca');
+
 
                 $reservation= new reservations();
                 $dateToday= date("Y-m-d");

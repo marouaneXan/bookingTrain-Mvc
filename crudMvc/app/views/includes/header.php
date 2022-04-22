@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bondi</title>
+    <title>User</title>
    
     <!-- <link rel="stylesheet" href="css/bondi.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -59,7 +59,7 @@
               <a class="nav-link p-2 p-lg-3" href="<?php echo BURL;?>voyage/profileC"><?php  if (isset($_SESSION['isLogin'])) echo $_SESSION['prenom']." ".$_SESSION['nom'];?></a>
             </li>
           </ul>
-          <!-- isset($url[0])? ucwords($url[0])."Controller":"HomeController" -->
+           <!-- isset($url[0])? ucwords($url[0])."Controller":"HomeController" -->
           <a class="btn btn-info" href="<?php if (!isset($_SESSION['isLogin'])) {echo BURL.'Voyage/Login/0'; } else {  echo BURL.'Voyage/logOut';}?>"><?php  if (!isset($_SESSION['isLogin'])) echo "Login"; else echo "Logout";   ?></a>
         </div>
       </div>

@@ -71,6 +71,13 @@ if(!isset($_SESSION['is_logedin'])){
     <p class="font-monospace text-center fw-bolder fs-1">ALL VOYAGES CANCELED</p>
 
 
+                            <?php if(isset($msg) ):?> 
+                            <div class="alert alert-success" role="alert">
+                                <?php echo $msg ;?>
+                            </div>  <?php endif;?>
+
+
+
     <table class="table">
   <thead>
     <tr>
@@ -100,7 +107,7 @@ if(!isset($_SESSION['is_logedin'])){
                             <td><?php echo $row['dateVoyage']; ?></td>
                             <td><?php echo $row['nom_train']; ?></td>
                             <td>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Annuler</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"   onclick="window.location.href='<?php  echo BURL?>admin/delete_voyage_annuler/ <?php echo $row['id'];?>'">Annuler</button>
                             </td>
                         
                         </tr>

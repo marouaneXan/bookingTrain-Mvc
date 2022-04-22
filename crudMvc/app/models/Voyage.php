@@ -126,6 +126,17 @@ public function  TestVoyageAnnuler($id_voyage,$dateVoyage){
     
 }
 
+public function deleteVoyageAnnuler($id_voyage_annuler){
+        
+        $sql="delete from voyage_anuuler  where id = ?";
+        $result = $this->conn->prepare($sql); 
+        
+         return $result->execute([$id_voyage_annuler]); 
+
+
+
+}
+
 
 
 }

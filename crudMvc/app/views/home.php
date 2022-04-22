@@ -66,6 +66,14 @@ if(!isset($_SESSION['is_logedin'])){
 <button type="button" onclick="resetForm()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 +Add Voyage
 </button>
+<?php if(isset($msg) && $msg==0 ):?> 
+  <div class="alert alert-danger" role="alert">
+    deja annuler cette voyage
+    </div> <?php endif ?>
+    <?php if(isset($msg) && $msg==1 ):?> 
+  <div class="alert alert-success" role="alert">
+      Bien annuler
+    </div> <?php endif ?>
 
 <!-- Modal  add voyage-->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -73,6 +81,7 @@ if(!isset($_SESSION['is_logedin'])){
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel"> add Voyage</h5>
+        
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

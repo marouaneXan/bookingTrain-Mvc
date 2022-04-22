@@ -37,9 +37,6 @@ private function prepareUrl(){
     }
 
 
-    
-
-
 }
 private function render(){
 

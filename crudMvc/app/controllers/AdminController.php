@@ -12,6 +12,8 @@ class AdminController{
     //    $data['train']= $train->getTrains();
    view::load('loginAdminPage');
 //   view::load('homeVoyages');
+// $db=new admin();  
+//     echo $db->addAdmin("admin","admin");
     // view::load('includes\header');
 
    
@@ -125,7 +127,7 @@ class AdminController{
   
      $db= new Voyage();
      
-     $db->addVoyage($gare_depart,$gare_arriver,$prix,$heure_depart,$heure_fin,$id_train,$etat_voyage);
+    //  $db->addVoyage($gare_depart,$gare_arriver,$prix,$heure_depart,$heure_fin,$id_train,$etat_voyage);
      $data['voyages']=$db->getAllVoyages();
        view::load('home',$data);
   
@@ -141,10 +143,24 @@ class AdminController{
          $dateVoyage = $_POST['dateVoyage'];
          $id_voyageA = $_POST['id_voyageA'];
          $db= new Voyage();
-         $db->addVoyageAnnuler($dateVoyage,$id_voyageA); 
+         if(!$db->TestVoyageAnnuler($id_voyageA,$dateVoyage)){
+        $db->addVoyageAnnuler($dateVoyage,$id_voyageA); 
+        $data['msg']=1;
+
+            // echo "ok";
+             
+         } else
+         $data['msg']=0;
+        //  echo"not ok";
          $train=new train();
          $data['train']= $train->getTrains();
          $data['voyages']=$db->getAllVoyages();
+         $reservation=new reservations();
+         $client= new client();
+         $data['clients']=$reservation->getsAllReservations();
+           
+         $data['reservations']=$client->getsAllClients();
+         $data['voyages' ]=$db->getAllVoyages();
          view::load('home',$data);
   
         
@@ -153,28 +169,29 @@ class AdminController{
   public function Voyageannuler(){
      $db= new Voyage();
      $data['voyages' ]=$db->getAllVoyagesCanceled();
+     
      view::load('voyageAnnulerAdmin',$data);
   
   
   }
 
+  public function delete_voyage_annuler($id_voyage_annuler){
 
+    $voyage=new Voyage();
 
+    if($voyage->deleteVoyageAnnuler($id_voyage_annuler)){
+        $data['msg']="Bien  annuler";
 
+        
+    } else{  $data['msg']="erreur annulation"; }
 
-
-
-
-
-
-
-
-
-
+    $data['voyages' ]=$voyage->getAllVoyagesCanceled();
+    view::load('voyageAnnulerAdmin',$data);
 
 
 
 }
+}       
 
 
 
